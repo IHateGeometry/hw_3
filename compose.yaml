@@ -5,8 +5,21 @@ services:
       - "127.0.0.1:${HOST_PORT}:8000"
     environment:
       GREETING: "${GREETING}"
+      STORAGE: redis
+      REDIS_URL: "redis://redis:6379/0"
     volumes:
       - counter-data:/data
+    healthcheck:
+      test: curl -f http://127.0.0.1:8000/readyz
+      interval: 1s
+  redis:
+    image: redis:7.4-alpine
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
 
 volumes:
   counter-data:
+  redis-data:
