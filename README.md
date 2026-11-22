@@ -1,3 +1,5 @@
-## Шаблон для третьего ДЗ по ИПР
-
-Условие дз доступно по [ссылке](https://github.com/Nikfilk2030/missing_semester_hse_cs/blob/main/2026/amcs/year_1/hw_3/README.md)
+1) docker build -t v1 . - сборка
+docker run -p 127.0.0.1:8080:8000 -e GREETING="meow" v1 - запуск с приветствием через переменную окружения
+docker run -p 127.0.0.1:8080:8000 v1 - запуск без переменной
+curl http://127.0.0.1:8080/ - без увеличения счётчика
+curl -X POST http://127.0.0.1:8080/increment - с увеличением
